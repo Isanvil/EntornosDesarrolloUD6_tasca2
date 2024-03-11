@@ -7,16 +7,20 @@ public class DiasLluvia {
     }
 
     public boolean registroDia(int dia, int mes, boolean lluvia){
-        if (dia <= 31 && dia >= 1 && mes <= 12 && mes >= 1){
-            calendarioLluvia[dia][mes] = lluvia;
+        dia--;
+        mes--;
+        if (dia <= 30 && dia >= 0 && mes <= 11 && mes >= 0 && lluvia){
+            calendarioLluvia[mes][dia] = lluvia;
             return true;
         }
         return false;
     }
 
     public boolean consultarDia (int dia, int mes){
-        if (dia <= 31 && dia >= 1 && mes <= 12 && mes >= 1){
-            if (calendarioLluvia[dia][mes] == true){
+        dia--;
+        mes--;
+        if (dia <= 30 && dia >= 0 && mes <= 11 && mes >= 0){
+            if (calendarioLluvia[mes][dia] == true){
                 return true;
             }
         }
