@@ -69,7 +69,7 @@ class DiasLluviaTest {
     }
 
     @Test
-    public void testConsultasDiasLluviosoMedioAnyo182_return186(){
+    public void testConsultasDiasLluviosoMedioAnyo182_return186(){  //Devuelve más de la mitad de días de un año real
         DiasLluvia d = new DiasLluvia();
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j <= d.getCalendarioLluvia()[i].length; j++) {
@@ -77,5 +77,39 @@ class DiasLluviaTest {
             }
         }
         assertNotEquals(182, d.contarDiasLluvios());
+    }
+
+    //Test Cuarto método (Trimestre más lluvioso)
+    @Test
+    public void testTrimestreLluvioso1_return1(){   //Lluvias los meses enteros de enero a marzo (ambos incluidos)
+        DiasLluvia d = new DiasLluvia();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < d.getCalendarioLluvia().length; j++) {
+                d.registroDia(j, i, true);
+            }
+        }
+        assertEquals(1, d.trimestreLluvioso());
+    }
+
+    @Test
+    public void testTrimestreLluvioso2_return2(){   //Lluvia los meses enteros de abril a junio (ambos incluidos)
+        DiasLluvia d = new DiasLluvia();
+        for (int i = 3; i < 5; i++) {
+            for (int j = 0; j < d.getCalendarioLluvia().length; j++) {
+                d.registroDia(j, i, true);
+            }
+        }
+        assertEquals(2, d.trimestreLluvioso());
+    }
+
+    @Test
+    public void testTrimestreLluvioso1Y2_return1(){   //Lluvia los meses enteros de enero a junio (ambos incluidos)
+        DiasLluvia d = new DiasLluvia();
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < d.getCalendarioLluvia().length; j++) {
+                d.registroDia(j, i, true);
+            }
+        }
+        assertNotEquals(2, d.trimestreLluvioso()); //El segundoi semetre tiene más días
     }
 }
