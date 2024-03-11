@@ -107,5 +107,7 @@ public class DiasLluvia {
         return 0;
     }
 
-
+    public boolean[][] getCalendarioLluvia() {
+        return calendarioLluvia;
+    }
 }

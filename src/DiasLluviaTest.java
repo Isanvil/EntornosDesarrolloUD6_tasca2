@@ -44,4 +44,38 @@ class DiasLluviaTest {
         d.registroDia(30, 2, true);
         assertNotEquals(false, d.consultarDia(30, 2));
     }
+
+    //Test tercer método
+    @Test
+    public void testConsultaDiasLluviosos10_return10(){
+        DiasLluvia d = new DiasLluvia();
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 11; j++) {
+                d.registroDia(j, i, true);
+            }
+        }
+        assertNotEquals(10, d.contarDiasLluvios());
+    }
+
+    @Test
+    public void testConsultaDiasLluviosos31_return31(){
+        DiasLluvia d = new DiasLluvia();
+        for (int i = 11; i < d.getCalendarioLluvia().length; i++) {
+            for (int j = 0; j <= d.getCalendarioLluvia()[i].length; j++) {
+                d.registroDia(j, i, true);
+            }
+        }
+        assertEquals(31, d.contarDiasLluvios());
+    }
+
+    @Test
+    public void testConsultasDiasLluviosoMedioAnyo182_return186(){
+        DiasLluvia d = new DiasLluvia();
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j <= d.getCalendarioLluvia()[i].length; j++) {
+                d.registroDia(j, i, true);
+            }
+        }
+        assertNotEquals(182, d.contarDiasLluvios());
+    }
 }
