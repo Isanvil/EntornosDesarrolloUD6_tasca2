@@ -112,4 +112,29 @@ class DiasLluviaTest {
         }
         assertNotEquals(2, d.trimestreLluvioso()); //El segundoi semetre tiene más días
     }
+
+    //Test método quinto
+    @Test
+    public void testPrimerDia5_return5(){
+        DiasLluvia d = new DiasLluvia();
+        d.registroDia(5, 1, true);
+        d.registroDia(10, 1, true);
+        assertEquals(5, d.primerDiaLluvia());
+    }
+
+    @Test
+    public void testPrimerDia41_return41(){
+        DiasLluvia d = new DiasLluvia();
+        d.registroDia(10, 2, true);
+        d.registroDia(5, 4, true);
+        assertEquals(41, d.primerDiaLluvia());
+    }
+
+    @Test
+    public void testPrimerDia62_return62(){
+        DiasLluvia d = new DiasLluvia();
+        d.registroDia(31, 2, true);
+        d.registroDia(5, 4, true);
+        assertNotEquals(60, d.primerDiaLluvia());   //Espero el último día posible de febrero
+    }
 }
