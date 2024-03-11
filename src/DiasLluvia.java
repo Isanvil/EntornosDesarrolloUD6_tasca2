@@ -36,35 +36,71 @@ public class DiasLluvia {
     }
 
     public int trimestreLluvioso(){
+        int trimestre;
+        int masLluvioso;
         int contador1 = 0;
         int contador2 = 0;
         int contador3 = 0;
         int contador4 = 0;
-
-        for (int i = 0; i < calendarioLluvia.length; i++) {
+        for (int i = 0; i < 2; i++) {
             for (int j = 0; j < calendarioLluvia[i].length; j++) {
-                if ((i >= 0 && i <= 2) && calendarioLluvia[i][j] == true) {
+                if (calendarioLluvia[i][j] == true){
                     contador1++;
-                } else if ((i >= 3 && i <= 5) && calendarioLluvia[i][j] == true) {
-                    contador2++;
-                } else if ((i >= 6 && i <= 8) && calendarioLluvia[i][j] == true) {
-                    contador3++;
-                } else if ((i >= 9 && i <= 11) && calendarioLluvia[i][j] == true) {
-                    contador4++;
                 }
-
             }
         }
-
-        if(contador1 > contador2 && contador1 > contador3 && contador1 > contador4){
-            return 1;
-        } else if (contador2 > contador3 && contador2 > contador4){
-            return 2;
-        } else if (contador3 > contador4){
-            return 3;
-        } else {
-            return 4;
+        masLluvioso = contador1;
+        trimestre = 1;
+        for (int i = 3; i < 5; i++) {
+            for (int j = 0; j < calendarioLluvia[i].length; j++) {
+                if (calendarioLluvia[i][j] == true){
+                    contador2++;
+                }
+            }
         }
+        if (contador2 > masLluvioso){
+            masLluvioso = contador2;
+            trimestre = 2;
+        }
+
+        for (int i = 6; i < 8; i++) {
+            for (int j = 0; j < calendarioLluvia[i].length; j++) {
+                if (calendarioLluvia[i][j] == true){
+                    contador3++;
+                }
+            }
+        }
+        if (contador3 > masLluvioso){
+            masLluvioso = contador3;
+            trimestre = 3;
+        }
+
+        for (int i = 9; i < 11; i++) {
+            for (int j = 0; j < calendarioLluvia[i].length; j++) {
+                if (calendarioLluvia[i][j] == true){
+                    contador4++;
+                }
+            }
+        }
+        if (contador4 > masLluvioso){
+            masLluvioso = contador4;
+            trimestre = 4;
+        }
+
+        return trimestre;
+    }
+
+    public int primerDiaLluvia(){
+        int contador = 0;
+        for (int i = 0; i < calendarioLluvia.length; i++) {
+            for (int j = 0; j < calendarioLluvia[i].length; j++) {
+                contador++;
+                if (calendarioLluvia[i][j] == true){
+                    return contador;
+                }
+            }
+        }
+        return 0;
     }
 
 
